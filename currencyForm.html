@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if cur_exchange_buy %}
+    {{user_currency_1}} in {{user_currency_2}} : {{cur_exchange_buy}} for buy, {{cur_exchange_sale}} for sale
+{% endif %}
+<br>
+<br>
+<br>
+
+<form action="/currency" method="post">
+    <label for="bank_id">Bank: </label><br>
+    <select id="bank_id" name="bank">
+        <option value="A1">A1</option>
+        <option value="Privatbank">Privatbank</option>
+        <option value="Monobank">Monobank</option>
+        <option value="OshadBank">OshadBank</option>
+    </select>
+    <br>
+
+    <label for="currency_1_id">Base currency:</label><br>
+    <select id="currency_1_id" name="currency_1">
+        <option value="UAH">UAH</option>
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="GPB">GPB</option>
+    </select>
+    <br>
+
+    <label for="currency_2_id">Exchange currency:</label><br>
+    <select id="currency_2_id" name="currency_2">
+        <option value="UAH">UAH</option>
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value='GBP'>GPB</option>
+    </select>
+    <br>
+
+    <label for="date_id">Date:</label><br>
+    <input type='date' id="date_id" name="date" value="{{request.form['date']}}">
+    <br><br>
+
+    <input type="submit" value="Exchange!">
+</form>
+</body>
+</html>

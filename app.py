@@ -37,10 +37,10 @@ def currency_converter():
         user_currency_1 = request.form['currency_1']
         user_date = request.form['date']
         user_currency_2 = request.form['currency_2']
-        buy_rate_1 = 1
-        buy_rate_2 = 1
-        sale_rate_1 = 1
-        sale_rate_2 = 1
+        buy_rate_1 = 0
+        buy_rate_2 = 0
+        sale_rate_1 = 0
+        sale_rate_2 = 0
         for one_currency_info in currency_list:
             if user_bank == one_currency_info['bank'] and user_currency_1 == one_currency_info['currency'] \
                     and user_date == one_currency_info['date']:

@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask import request
 from dbFunc import DBManager
-import sqlite3
+from celeryWork import add
 
 app = Flask(__name__)
 
@@ -14,8 +14,8 @@ def loginUser():
     return "<p>Login!</p>"
 
 @app.route("/logout", methods = ['GET'])
-def logout_userd():
-    return "<p>Logout</p>"
+def logout_user():
+    add.apply_async(args=(1, 2))
 
 @app.route("/register", methods = ['GET', 'POST'])
 def register_user():
@@ -52,5 +52,3 @@ def currency_converter():
                                )
     else:
         return render_template('currencyForm.html')
-
-

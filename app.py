@@ -52,3 +52,6 @@ def currency_converter():
                                )
     else:
         return render_template('currencyForm.html')
+    
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')

@@ -2,12 +2,20 @@ from flask import Flask, render_template
 from flask import request
 from dbFunc import DBManager
 from celeryWork import add
+import al_db
+import models_db
+from sqlalchemy import select
 
 app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def login_user():
     if request.method == 'GET':
+        conn = al_db.engine.connect()
+        res1 = select([models_db.User])
+        result = conn.execute(res1)
+        data_res = result.fetchall()
+        print(result)
         pass
     else:
         pass
@@ -52,6 +60,6 @@ def currency_converter():
                                )
     else:
         return render_template('currencyForm.html')
-    
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

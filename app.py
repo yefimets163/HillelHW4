@@ -6,7 +6,7 @@ from celeryWork import add
 app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
-def loginUser():
+def login_user():
     if request.method == 'GET':
         pass
     else:

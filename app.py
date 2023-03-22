@@ -1,12 +1,7 @@
-from flask import Flask, render_template
-from flask import request
-from requests import Session
-
-from dbFunc import DBManager
-from celeryWork import add
 import al_db
 import models_db
 from sqlalchemy import select
+from sqlalchemy.orm import Session
 
 app = Flask(__name__)
 

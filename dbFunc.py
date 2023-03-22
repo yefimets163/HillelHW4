@@ -3,7 +3,7 @@ import datetime
 
 class DBManager:
     def __enter__(self):
-        self.con = sqlite3.connect("currencyData.db")
+        self.con = sqlite3.connect("currency.db")
         self.cursor = self.con.cursor()
         return self
 
@@ -24,10 +24,10 @@ class DBManager:
 
 def generateData():
     date = [
-        {'bank':'a1', 'currency': 'UAH', 'buyRate': 0.023, 'sellRate': 0.025},
-        {'bank':'a1', 'currency': 'USD', 'buyRate': 1, 'sellRate': 1},
-        {'bank':'a1', 'currency': 'EUR', 'buyRate': 0.9, 'sellRate': 0.95},
-        {'bank':'a1', 'currency': 'GBP', 'buyRate': 1.15, 'sellRate': 1.2}
+        {'bank':'a1', 'currency': 'UAH', 'buyRate': 1, 'sellRate': 0.95},
+        {'bank':'a1', 'currency': 'USD', 'buyRate': 1, 'sellRate': 0.95},
+        {'bank':'a1', 'currency': 'EUR', 'buyRate': 1, 'sellRate': 0.95},
+        {'bank':'a1', 'currency': 'GBP', 'buyRate': 1, 'sellRate': 0.95}
             ]
 
     with DBManager() as db:
@@ -39,3 +39,4 @@ def generateData():
             dateExchange = datetime.datetime.now().strftime('%Y-%m-%d')
             query = f'INSERT INTO currency (bank, currency, dateExchange, buyRate, sellRate) VALUES ("{bank}", "{currency}", "{dateExchange}", {buyRate}, {sellRate})'
             db.writeData(query)
+
